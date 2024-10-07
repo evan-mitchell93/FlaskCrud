@@ -1,3 +1,11 @@
+#Evan Mitchell
+#Created On: 10/7/2024
+#Basic Crud operations to showcase knowledge of Flask and HTML
+#Utilizes a SQLite db
+#In the interest of saving time, the delete method is called via a get and does not utilize an alert to confirm 
+#the user intends to complete the action.
+
+
 from flask import Flask, render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
