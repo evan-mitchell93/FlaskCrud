@@ -1,0 +1,73 @@
+<!--Extension of template file-->
+{% extends 'base.html' %}
+<!--Including other template files-->
+{% include 'header.html' %}
+{% block title %} Home {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h2>Manage <b>Athletes</b> <button type="button" class="btn btn-success float-right"
+        data-bs-toggle="modal" data-bs-target="#athleteModal">Create New</button></h2>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th >First Name</th>
+                <th >Last Name</th>
+                <th >Jersey #</th>
+                <th >Positions</th>
+                <th >Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for athlete in athletes %}
+                <tr>
+                    <td>{{athlete.firstname}}</td>
+                    <td>{{athlete.lastname}}</td>
+                    <td>{{athlete.jersey}}</td>
+                    <td>{{athlete.positions}}</td>
+                    <td><button class="btn btn-warning"><a href="{{url_for('edit_athlete', id=athlete.id)}}">Edit</a></button>
+                        <button class="btn btn-danger"><a href="{{url_for('delete_athlete',id=athlete.id)}}">Delete</a></button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="modal" tabindex="-1" id="athleteModal">
+    <div class = "modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Athlete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label>First Name:</label>
+                        <input type="text" class="form-control" name="firstname" required="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name:</label>
+                        <input type="text" class="form-control" name="lastname" required="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Jersey #:</label>
+                        <input type="number" class="form-control" name="jersey" required="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Positions:</label>
+                        <input type="text" class="form-control" name="positions" required="1">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Athlete</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

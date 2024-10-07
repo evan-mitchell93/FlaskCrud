@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} EDIT {% endblock %}
+
+{% block body %}
+<h3>Edit: {{athlete.id}}</h3>
+<div class="container">
+    <form action="" method="POST">
+        <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" class="form-control" name="firstname" required="1" value={{athlete.firstname}}>
+        </div>
+        <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" class="form-control" name="lastname" required="1" value={{athlete.lastname}}>
+        </div>
+        <div class="form-group">
+            <label>Jersey #:</label>
+            <input type="number" class="form-control" name="jersey" required="1" value={{athlete.jersey}}>
+        </div>
+        <div class="form-group">
+            <label>Positions:</label>
+            <input type="text" class="form-control" name="positions" required="1" value={{athlete.positions}}>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Athlete</button>
+    </form>
+    </form>
+</div>
+{% endblock %}
