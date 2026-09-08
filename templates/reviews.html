@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} Reviews {% endblock %}
+{% block body %}
+<div class="container">
+    <h3>Reviews</h3>
+    <button class="btn btn-primary" onclick="window.location.href='/add_review'">Add Review</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Game ID</th>
+                <th>Review</th>
+                <th>Rating</th>
+                <th>Completed</th>
+                <th>Platform</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr>
+                <td>{{ review.game_id }}</td>
+                <td>{{ review.review }}</td>
+                <td>{{ review.rating }}</td>
+                <td>{{ review.completed }}</td>
+                <td>{{ review.platform }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -7,28 +7,30 @@
 {% block body %}
 
 <div class="container">
-    <h2>Manage <b>Athletes</b> <button type="button" class="btn btn-success float-right"
-        data-bs-toggle="modal" data-bs-target="#athleteModal">Create New</button></h2>
+    <h2>Manage <b>Games</b> <button type="button" class="btn btn-success float-right"
+        data-bs-toggle="modal" data-bs-target="#gameModal">Create New</button></h2>
     
     <table class="table">
         <thead>
             <tr>
-                <th >First Name</th>
-                <th >Last Name</th>
-                <th >Jersey #</th>
-                <th >Positions</th>
+                <th >Title</th>
+                <th >Developer</th>
+                <th >Publisher</th>
+                <th >Available Platforms</th>
                 <th >Actions</th>
             </tr>
         </thead>
         <tbody>
-            {% for athlete in athletes %}
+            {% for game in games %}
                 <tr>
-                    <td>{{athlete.firstname}}</td>
-                    <td>{{athlete.lastname}}</td>
-                    <td>{{athlete.jersey}}</td>
-                    <td>{{athlete.positions}}</td>
-                    <td><button class="btn btn-warning"><a href="{{url_for('edit_athlete', id=athlete.id)}}">Edit</a></button>
-                        <button class="btn btn-danger"><a href="{{url_for('delete_athlete',id=athlete.id)}}">Delete</a></button>
+                    <td>{{game.title}}</td>
+                    <td>{{game.developer}}</td>
+                    <td>{{game.publisher}}</td>
+                    <td>{{game.available_platforms}}</td>
+                    <td><button class="btn btn-warning"><a href="{{url_for('edit_game', id=game.id)}}">Edit</a></button>
+                        <form action="{{url_for('delete_game', id=game.id)}}" method="POST" style="display:inline;">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
                     </td>
                 </tr>
             {% endfor %}
@@ -36,32 +38,32 @@
     </table>
 </div>
 
-<div class="modal" tabindex="-1" id="athleteModal">
+<div class="modal" tabindex="-1" id="gameModal">
     <div class = "modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Athlete</h5>
+                <h5 class="modal-title">Add Game</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="" method="POST">
                     <div class="form-group">
-                        <label>First Name:</label>
-                        <input type="text" class="form-control" name="firstname" required="1">
+                        <label>Title:</label>
+                        <input type="text" class="form-control" name="title" required="1">
                     </div>
                     <div class="form-group">
-                        <label>Last Name:</label>
-                        <input type="text" class="form-control" name="lastname" required="1">
+                        <label>Developer:</label>
+                        <input type="text" class="form-control" name="developer" required="1">
                     </div>
                     <div class="form-group">
-                        <label>Jersey #:</label>
-                        <input type="number" class="form-control" name="jersey" required="1">
+                        <label>Publisher:</label>
+                        <input type="text" class="form-control" name="publisher" required="1">
                     </div>
                     <div class="form-group">
-                        <label>Positions:</label>
-                        <input type="text" class="form-control" name="positions" required="1">
+                        <label>Available Platforms:</label>
+                        <input type="text" class="form-control" name="available_platforms" required="1">
                     </div>
-                    <button type="submit" class="btn btn-primary">Save Athlete</button>
+                    <button type="submit" class="btn btn-primary">Save Game</button>
                 </form>
             </div>
             <div class="modal-footer">
